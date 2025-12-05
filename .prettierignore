@@ -1,0 +1,33 @@
+# Стандартні директорії
+node_modules
+dist
+build
+coverage
+
+# Експортовані типи або генерація
+*.d.ts
+
+# Екологічні файли
+.env
+.env.local
+.env.*.local
+
+# Логи
+*.log
+
+# Git директиви
+.git
+.gitignore
+
+# Сервісні файли
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Зображення та інші binary-файли
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
