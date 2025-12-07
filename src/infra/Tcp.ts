@@ -9,7 +9,7 @@ import { middlewares } from 'app/middlewares';
 export class Tcp implements IService {
   private static instance: Tcp;
 
-  private routePrefix = './api';
+  private routePrefix = '/api';
   public server = express();
 
   constructor() {
@@ -22,7 +22,7 @@ export class Tcp implements IService {
   async init() {
     const { server, routePrefix } = this;
 
-    server.use(express.json());
+    // server.use(express.json());
 
     useExpressServer(server, {
       routePrefix,
@@ -30,7 +30,7 @@ export class Tcp implements IService {
       middlewares,
       cors: true,
       defaultErrorHandler: true,
-      validation: false,
+      validation: true,
     });
 
     return new Promise<boolean>((resolve) => {
