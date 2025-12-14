@@ -5,7 +5,8 @@ import { useExpressServer } from 'routing-controllers';
 import { IService } from 'types/services';
 import { controllers } from 'app/domain';
 import { middlewares } from 'app/middlewares';
-
+import pino from 'pino-http';
+import cors from 'cors';
 export class Tcp implements IService {
   private static instance: Tcp;
 
@@ -21,8 +22,16 @@ export class Tcp implements IService {
 
   async init() {
     const { server, routePrefix } = this;
+    server.use(express.json());
+    server.use(cors());
 
-    // server.use(express.json());
+    server.use(
+      pino({
+        transport: {
+          target: 'pino-pretty',
+        },
+      }),
+    );
 
     useExpressServer(server, {
       routePrefix,
